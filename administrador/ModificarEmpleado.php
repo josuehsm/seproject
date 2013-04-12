@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿<?php include("../php/AccessControl.php"); ?>
+<!DOCTYPE html>
+<?php
+	include("../php/Empleado.class.php");
+	$emp = $_GET["id"];
+	$encontrado = Empleado::findById($emp);
+?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -19,7 +25,7 @@
 				
                 <h2>Modificar empleado</h2>
 
-				<form id="altaEmpleado" name="altaEmpleado">
+				<form id="ModEmpleado" name="ModEmpleado" >
 				<div id="content">
 
                     <div class="box">
@@ -28,20 +34,20 @@
 					<table>
 					<tr>
                        <td>Nombre:</td>
-					   <td><input id="nombreE" name="nombreE" type="text" placeholder="Nombre del Empleado"/></td>
+					   <td><?php echo "<input id='nombreP' name='nombreP' type='text' value='".$encontrado->getNombre()."'/>"; ?></td>
 					</tr>
                     
                     <tr>
 					  <td>CURP:</td>
-					  <td><input id="curp" name="curp" type="text" placeholder="CURP"/> </td>
+					  <td><?php echo "<input id='ide' name='ide' type='text' value='".$encontrado->getCurp()."'/>"; ?></td>
                     </tr>
                     <tr>
 					  <td>Dirección:</td>
-					  <td><input id="dir" name="dir" type="text" placeholder="Direccion"/> </td>
+					  <td><?php echo "<input id='dir' name='dir' type='text' value='".$encontrado->getDireccion()."'/>"; ?></td>
                     </tr>
                     <tr>
 					 <td>Contraseña:</td>
-					 <td><input id="contras" name="dir" type="password" placeholder="Contraseña "/> </td>
+					 <td><?php echo "<input id='nombreP' name='nombreP' type='text' value='".$encontrado->getContrasena()."'/>"; ?></td>
                     <tr>
 					</table>
                     <div class="box">
@@ -54,10 +60,9 @@
                                           <option>Ventas</option>
                                   </select>
                         </div>
-                    <div class="box">
-                        <div class="form-button" onClick="cancelarE()">Cancelar</div>
-                        <div class="form-button" onClick="validaE()">Aceptar</div>
-						
+                    <div class="box">                        
+                        <div class="form-button" onClick="ModEmp()">Aceptar</div>
+						<div class="form-button" onClick="cancelarE()">Cancelar</div>
                     </div>
                 </div>
 				</form>
