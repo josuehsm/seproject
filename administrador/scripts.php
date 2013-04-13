@@ -59,71 +59,8 @@ function validarReporte()
 	
 }
 
-function isNew()
-{
-	if(document.cambioBox.ingrediente.selectedIndex==document.cambioBox.ingrediente.length-1)
-	{
-		window.location='AltasIngrediente.php'
-	}
-	else
-	{
-		encontrado=document.getElementById(document.cambioBox.ingrediente.selectedIndex); 
-	
-		if(encontrado==undefined && document.cambioBox.ingrediente.selectedIndex!=0)
-		{
-			field = document.getElementById('cuerpoT'); 
-			tabla= document.getElementById('table-aux'); 
-			actual=tabla.rows.length;
-			
-			celda1= document.createElement('td'); 
-			texto=document.createElement('input');
-			texto.id='ide'+actual;
-			texto.name='ide'+actual;
-			texto.type = 'text';
-			texto.value=document.cambioBox.ingrediente.selectedIndex;
-			celda1.appendChild(texto);
-			
-			input=document.createElement('input');
-			input.id='cantidad'+actual;
-			input.name='cantidad'+actual;
-			input.type = 'text';
-			input.placeholder='Cantidad de Ingrediente';
-			celda2= document.createElement('td'); 
-			celda2.appendChild(input);		
-			
-			celda3= document.createElement('td'); 
-			divIMG= document.createElement('div'); 
-			
-			imagen=document.createElement('img'); 
-			imagen.src="../img/less.png";
-			imagen.alt="Eliminar";
-			imagen.name="eliminar"+document.cambioBox.ingrediente.selectedIndex;
-			divIMG.appendChild(imagen);
-			divIMG.className ='evento';	
-			divIMG.id ='divIMG'+document.cambioBox.ingrediente.selectedIndex;	
-			divIMG.setAttribute( "onclick","quitarIngrediente("+document.cambioBox.ingrediente.selectedIndex+");");
-			celda3.className='opc';
-			celda3.appendChild(divIMG);	
-			
-			renglon = document.createElement('tr'); 
-			renglon.className ='tr-cont'; 
-			renglon.id=document.cambioBox.ingrediente.selectedIndex;
-			renglon.name=document.cambioBox.ingrediente.selectedIndex;
-		
-			renglon.appendChild(celda1);
-			renglon.appendChild(celda2);
-			renglon.appendChild(celda3);
-			
-			field.appendChild(renglon);	
-		}
-	}
-	
-}
 
-function quitarIngrediente(obj) {
-  field = document.getElementById('cuerpoT'); 
-  field.removeChild(document.getElementById(obj)); 
-}
+
 function validarReceta()
 {		
 		var RegExPattern = /^(?:\+|-)?\d+$/;
